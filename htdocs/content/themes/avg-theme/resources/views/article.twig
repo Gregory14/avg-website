@@ -1,0 +1,10 @@
+{% extends 'layouts/main.twig' %}
+
+{% block main %}
+    <h1>{{title}}</h1>
+    <div>{{ wpautop(content)|raw }}</div>
+{% endblock %}
+
+{% block galleryImage %}{% endblock %}
+
+{% block actualities %}{% endblock %}

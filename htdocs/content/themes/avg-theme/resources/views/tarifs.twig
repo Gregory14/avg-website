@@ -1,0 +1,35 @@
+{% extends 'layouts/main.twig' %}
+
+{% block main %}
+    <h1>{{title}}</h1>
+    <p>introduction des tarifs</p>
+	
+	<h2>L'école de tir</h2>
+	<p>Ce tarif est applicable pour tous les nouveaux adhérant uniquement la première année.</p>
+
+	{% for newPriceData in newPrices %}
+		<div class="Prix">
+				<h3>{{ newPriceData.newPriceTitle }}</h3>
+				<img src="#" alt="">
+				<p class="price">{{ newPriceData.newPrice }}</p>
+				<p class="bornsyear">{{ newPriceData.newPriceAge }}</p>
+    	</div>
+	{% endfor %} 
+
+	<div>{{ wpautop(content)|raw }}</div>
+
+	<h2>Renouvellement Adhérents</h2>
+	<p>Cette partie est applicable à partir de la sconde année de tir.</p>
+	
+	{% for priceData in prices %}
+		<div class="Prix">
+				<h3>{{ priceData.priceTitle }}</h3>
+				<img src="#" alt="">
+				<p class="price">{{ priceData.price }}</p>
+				<p class="bornsyear">{{ priceData.priceAge }}</p>
+    	</div>
+	{% endfor %} 
+
+	<div>{{ wpautop(renouvellement)|raw }}</div>
+
+{% endblock %}

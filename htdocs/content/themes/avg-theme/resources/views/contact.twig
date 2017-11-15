@@ -1,0 +1,21 @@
+{% extends 'layouts/main.twig' %}
+
+{% block main %}
+    <h1>{{title}}</h1>
+    <div class="bloc_square">{{ wpautop(content)|raw }}</div>
+
+	<div class="bloc_square">
+		<h3>Formulaire de contact</h3>
+		<ul>
+		{{ wpautop(Form.open())|raw }}	
+			<li>{{ Form.label('Votre nom') | raw}} {{ Form.text('name', '' , {'placeholder' : 'Votre nom'}) | raw }}</li>
+
+			<li>{{Form.label('Votre email') | raw}} {{ Form.email('mail', '' , {'placeholder' : 'votreadresse@mail.com'}) | raw }}</li>
+
+			<li>{{Form.label('Votre message') | raw}} {{ Form.textarea('description', '', {'placeholder' : 'Votre message'}) | raw }}</li>
+
+		    <li>{{Form.submit('submit', 'Envoyer', {'id' : 'awesome'}) | raw }}</li>
+		{{ wpautop( Form.close()) | raw }}
+		</ul>
+	</div>
+{% endblock %}

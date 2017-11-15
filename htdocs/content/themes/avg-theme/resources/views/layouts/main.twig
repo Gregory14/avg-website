@@ -1,0 +1,35 @@
+{{ include('layouts/header.twig') }}
+    <div class="container">
+        {% block main %}{% endblock %}
+    </div>
+{% if block ("galleryImage") is defined and gallery is not empty %}	
+    <div class="sectionGallery">
+        
+            <h3>Gallerie Image</h3>
+		    <div class="gallery">
+		    	{% for image in gallery %}
+		    		{{ image.imgPath|raw }}
+		    	{% endfor %}
+		    </div>
+        
+    </div>
+{% endif %}
+
+{% if block ("actualities") is defined %} 
+    <div class="sectionActuality">
+        <h3>Les autres actualités</h3>
+        <div class="actusList">
+            {% for actuality in actualities %}
+            <div class="actu">
+                    <p>coucou actu</p>
+                    <p class="dateActu"></p>
+                    <img src="" alt="">
+                    <h4>{{actuality.actuTitle}}</h4>
+                    <p>{{actuality.actuImg}}</p>
+            </div>
+            {% endfor %}            
+        </div>
+    </div>
+{% endif %}
+
+{{ include('layouts/footer.twig') }}

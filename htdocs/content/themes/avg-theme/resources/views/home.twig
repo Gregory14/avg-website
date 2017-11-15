@@ -1,0 +1,15 @@
+{% extends 'layouts/main.twig' %}
+
+{% block main %}
+	{% for item in listArticle %}
+	    <div class="article">
+	    	<p class="date">{{ item.post_date }}</p>
+	    	<img src="" alt="" class="thumbnail">
+	    	<h3>{{ item.post_title }}</h3>
+	    	<p>{{ item.post_excerpt }}</p>
+	    	<div class="button">{{ item.guid }}</div>
+	    </div>
+	{% endfor %}
+    <h1>Mon titre bordel : {{title}}</h1>
+    <div>{{ wpautop(content)|raw }}</div>
+{% endblock %}

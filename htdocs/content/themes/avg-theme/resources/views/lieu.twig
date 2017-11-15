@@ -1,0 +1,16 @@
+{% extends 'layouts/main.twig' %}
+
+{% block main %}
+    <h1>{{title}}</h1>
+    <div class="bloc_square">{{ wpautop(content)|raw}}</div>
+
+    <div class="bloc_square googlemap">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2619.8808507190315!2d2.5724939156778377!3d48.95575457929715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e616946733f313%3A0x3ff945f466ed8406!2s68+Avenue+Diderot%2C+93290+Tremblay-en-France!5e0!3m2!1sfr!2sfr!4v1508104383445" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+	</div>
+
+	<div class="bloc_square googlemap">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2620.2021106477623!2d2.563419651352461!3d48.949637302129716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e616a3a7c133c3%3A0x3917b592ffed2a6d!2sCours+de+la+R%C3%A9publique%2C+93290+Tremblay-en-France!5e0!3m2!1sfr!2sfr!4v1508104662187" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+	</div>
+
+	<div class="bloc_square">{{ wpautop(gymnase)|raw }}</div>
+{% endblock %}
