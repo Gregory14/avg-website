@@ -9,17 +9,13 @@ class LieuxController extends BaseController
 {
     public function lieux($post, $query)
     {
-    	// var_dump($post);
-        $gymnase = get_post_meta(get_the_id(), 'gymnase', true);
-        // $channels = Meta::get($post_id, 'channels');
-        // var_dump($gymnase);
+      $gymnase = get_post_meta(get_the_id(), 'gymnase', true);
     	$dataLieux = array(
-    		'title' => $post->post_title, 
+    		'title' => $post->post_title,
     		'content' => $post->post_content,
             'gymnase' => $gymnase
     		);
 
-		$lieux = view('lieu', $dataLieux);
-		echo $lieux;
+		return view('lieu', $dataLieux);
     }
 }

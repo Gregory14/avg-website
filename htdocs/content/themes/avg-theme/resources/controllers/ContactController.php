@@ -11,11 +11,11 @@ class ContactController extends BaseController
     {
     	//var_dump($post);
     	$dataContact = array(
-    		'title' => $post->post_title, 
+    		'title' => $post->post_title,
     		'content' => $post->post_content
     		);
 
 		$contact = view('contact', $dataContact);
-		echo $contact;
+		return $contact;
     }
 }

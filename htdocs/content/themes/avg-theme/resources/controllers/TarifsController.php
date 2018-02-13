@@ -10,7 +10,7 @@ class TarifsController extends BaseController
 {
     public function tarifs($post, $query)
     {
-        // GET renouvellement data 
+        // GET renouvellement data
         $renouvellement = get_post_meta($post->ID, 'renouvellement', true);
 
         // GET new Prices data
@@ -23,7 +23,7 @@ class TarifsController extends BaseController
 
 
         $dataTarifs = array(
-            'title' => $post->post_title, 
+            'title' => $post->post_title,
             'content' => $post->post_content,
             'newPrices' => $newPrices,
             'renouvellement' => $renouvellement,
@@ -31,7 +31,7 @@ class TarifsController extends BaseController
             );
 
         $tarifs = view('tarifs', $dataTarifs);
-        echo $tarifs;
+        return $tarifs;
 
 
         // récupérr l'object
@@ -40,15 +40,15 @@ class TarifsController extends BaseController
         // recuperer ID du post
         // print_r($post->ID);
 
-        // Création objet 
+        // Création objet
         // $obj = Meta::get($post->ID, 'newPrices'); // Chercher dans le namespace Theme\Controller
 
         // $obj = themosis_get_the_query($post->ID, 'newPrices'); // Equivalent à -> $query
 
-        // $obj = with($post)->get(); // Ne fonctionne pas 
+        // $obj = with($post)->get(); // Ne fonctionne pas
 
         // $obj = get_post_meta($post->ID, 'newPrices'); // Fonctionne -> Retourne un array
-        
+
         // print_r($post);
 
         // $obj = Meta::get($post->ID, 'newPrices'); // Chercher dans le namespace Theme\Controller

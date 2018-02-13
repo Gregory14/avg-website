@@ -1,8 +1,7 @@
 <?php
 
 namespace Theme\Models;
-
-use Illuminate\Database\Eloquent\Model;
+use Themosis\Route\HomeController;
 
 /**
  * Class Articles.
@@ -10,18 +9,29 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package Theme\Models
  */
-// class Articles extends Model
-class Articles 
+class Articles
 
 {
-    public function all()
+    public function getPosts()
     {
-        $query = new WP_Query([
-            'post_type' => 'post',
-            'posts_per_page' => -1,
-            'post_status' => 'publish'
-        ]);
-        
-        return $query->get_posts();
+      $listArticle = get_posts([
+        'posts_per_page' => 3,
+        'order' => 'DESC',
+        'post_status' => 'publish'
+      ]);
+        // return "Coucou";
+        return $listArticle;
+        // $query = new WP_Query([
+        //     'post_type' => 'post',
+        //     'posts_per_page' => -1,
+        //     'post_status' => 'publish'
+        // ]);
+        //
+        // return $query->get_posts();
+        //
+        // // $data = get_posts("post");
+        // // // $data = ["coucou", "c\'est moi", "welcome"];
+        // //
+        // // return $data;
     }
 }

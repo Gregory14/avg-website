@@ -21,21 +21,19 @@ class PageController extends BaseController
             }
 
             $dataPage = array(
-                'title' => $post->post_title, 
+                'title' => $post->post_title,
                 'content' => $post->post_content,
                 'gallery' => $img
                 );
-            $page = view('pages', $dataPage);
-            echo $page;
+            return view('pages', $dataPage);
         }
 
         else {
             $dataPage = array(
-                'title' => $post->post_title, 
+                'title' => $post->post_title,
                 'content' => $post->post_content
                 );
-            $page = view('pages', $dataPage);
-            echo $page;
+            return view('pages', $dataPage);
         }
     }
 }

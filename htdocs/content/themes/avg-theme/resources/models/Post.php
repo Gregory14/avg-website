@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package Theme\Models
  */
-class Post 
+class Post
 {
 
 }

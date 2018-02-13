@@ -8,26 +8,20 @@ use Themosis\Facades\Route;
 
 class HomeController extends BaseController
 {
-    public function index($post, $query, Articles $data)
+    public function index (Articles $listArticle)
     {
-    	// $model = $model->query()->get();
-        print_r($data);
-    	// $listArticle = $query->posts;
-    	// print_r($listArticle);
-
-    	/*foreach ($listArticle as $key) {
-    		# code...
-    		$articleData = array(
-    				'ID' => $key->ID,
-    				'date' => $key->post_date,
-    				'title' => $key->post_title,
-    				'resume' => $key->post_excerpt,
-    				'link' => $key->guid
-    			);
-            
-    		print_r($articleData);
-    		// return view('home', $listArticle);
-    	}*/
-        // return view('welcome');
+      $listArticle = $listArticle->getPosts();
+      for ($i=0; $i < sizeof($listArticle); $i++) {
+        # code...
+        $articleData[$i] = [
+          'ID' => $listArticle[$i]->ID,
+  				'date' => $listArticle[$i]->post_date,
+  				'title' => $listArticle[$i]->post_title,
+  				'resume' => $listArticle[$i]->post_content,
+  				'link' => $listArticle[$i]->guid
+        ];
+      }
+      $listArticle = [ 'listArticle' => $articleData];
+      return view('home', $listArticle);
     }
 }

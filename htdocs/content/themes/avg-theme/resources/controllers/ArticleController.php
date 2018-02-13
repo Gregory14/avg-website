@@ -24,22 +24,20 @@ class ArticleController extends BaseController
             }
 
             $dataArticle = array(
-                'title' => $post->post_title, 
+                'title' => $post->post_title,
                 'content' => $post->post_content,
                 'gallery' => $img,
                 'actualities' => $article
                 );
             return view('article', $dataArticle);
-            // echo $article;
         }
 
         else {
             $dataArticle = array(
-                'title' => $post->post_title, 
+                'title' => $post->post_title,
                 'content' => $post->post_content
                 );
             return view('article', $dataArticle);
-            // echo $article;
         }
     }
 }
