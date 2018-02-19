@@ -8,7 +8,7 @@ use Themosis\Route\BaseController;
 use Themosis\Facades\Route;
 use \WP_Query;
 
-class HomeController extends BaseController
+class ListPostsController extends BaseController
 {
     // public function pages($PageNumber)
     // {
@@ -20,7 +20,7 @@ class HomeController extends BaseController
       $id = (isset($id)) ? $id : 1 ;
       $ListPosts = PostsModel::all($id);
       $nbrPosts = PostsModel::getNbrPage();
-      // var_dump('Calcule nbr post : '.$nbrPosts);
+      // var_dump('Calcule nbr post LISTE : '.$nbrPosts);
 
           for ($i=0; $i < sizeof($ListPosts); $i++) {
             # code...
@@ -40,28 +40,4 @@ class HomeController extends BaseController
         // 'currentPage' => $id,
       ]);
     }
-
-  // public function pages()
-  // {
-  //   $ListPosts = PostsModel::all();
-  //   $nbrPosts = PostsModel::countPostPublish();
-  //
-  //       for ($i=0; $i < sizeof($ListPosts); $i++) {
-  //         # code...
-  //         $articleData[$i] = [
-  //           'ID' => $ListPosts[$i]->ID,
-  //           'date' => $ListPosts[$i]->post_date,
-  //           'title' => $ListPosts[$i]->post_title,
-  //           'resume' => $ListPosts[$i]->post_content,
-  //           'link' => $ListPosts[$i]->guid
-  //         ];
-  //       }
-  //
-  //   return view('home', [
-  //     'listArticle' => $articleData,
-  //     'nbrpost' => $nbrPosts,
-  //     'nextPage' => 'next_posts_link()',
-  //     'previousPage' => 'previous_posts_link()'
-  //   ]);
-  // }
 }

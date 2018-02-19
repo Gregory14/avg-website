@@ -19,19 +19,17 @@ class Articles
         'order' => 'DESC',
         'post_status' => 'publish'
       ]);
-        // return "Coucou";
         return $listArticle;
-        // $query = new WP_Query([
-        //     'post_type' => 'post',
-        //     'posts_per_page' => -1,
-        //     'post_status' => 'publish'
-        // ]);
-        //
-        // return $query->get_posts();
-        //
-        // // $data = get_posts("post");
-        // // // $data = ["coucou", "c\'est moi", "welcome"];
-        // //
-        // // return $data;
     }
+
+    // public function numberPostsPublish()
+    // {
+    //   // Count all post in all status
+    //   $count_posts = wp_count_posts();
+    //
+    //   // Count only posts published
+    //   $listAllArticlePupblished =  $count_posts->publish;
+    //
+    //   return $listAllArticlePupblished;
+    // }
 }

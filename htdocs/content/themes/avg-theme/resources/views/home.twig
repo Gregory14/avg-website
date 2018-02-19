@@ -19,4 +19,35 @@
     {% else %}
     <h2> Je ne suis pas rentré dans la boucle</h2>
     {% endfor %}
+
+    <div class="test_pagination">
+      {{ fn('the_posts_pagination', {
+        'mid_size' : '2',
+        'prev_text' : __( '<', 'textdomain' ),
+      	'next_text' : __( '>', 'textdomain' ),
+        'screen_reader_text': 'Titre de ma pagination à masquer en CSS',
+        }) }}
+    </div>
+    {# Pagination manuelle
+    {% if nbrpost > 1 %}
+    <div id="paging">
+      <ul>
+        <li class="previous_page"> <a href="{{ path }}/page/{{currentPage - 1}}"><</a></li>
+        {% if nbrpost > 6 %}
+            <li><a href="{{ path }}/{{ currentPage }}">1</a></li>
+            <li><a href="{{ path }}/page/2">2</a></li>
+            <li><a href="{{ path }}/page/3">4</a></li>
+            <li><a href="{{ path }}/page/4">4</a></li>
+            <li><a href="{{ path }}/page/5">5</a></li>
+        {% else %}
+            {% for nbr in 1..nbrpost %}
+                <li><a href="{{ path }}/page/{{ nbr }}">{{ nbr }} / {% if nbr == currentPage %} {{ currentPage }} {% endif %}</a></li>
+            {% endfor %}
+        {% endif %}
+        <li class="next_page"> <a href="{{ path }}/page/{{currentPage + 1}}">></a></li>
+      </ul>
+    </div>
+    {% endif %}
+    Fin pagination manuelle #}
+
 {% endblock %}

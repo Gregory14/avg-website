@@ -14,6 +14,12 @@
 //     return view('welcome');
 // });
 
+// Route::get('paged', 'HomeController@pages');
+// Route::get('page/{id}/', 'ListPostsController@index');
+Route::get('paged','ListPostsController@index');
+// Route::match(['GET', 'POST'], 'coucou/{id}', function(){return 'test.id';});
+// Route::get('page/{id}', 'HomeController@pages');
+
 Route::get('home', 'HomeController@index');
 
 // Using the simple model representation.
@@ -33,3 +39,5 @@ Route::match(['GET', 'POST'], 'template', ['tarifs', 'uses' =>'TarifsController@
 Route::match(['GET', 'POST'], 'page', 'PageController@index');
 
 Route::match(['GET', 'POST'], 'single', 'ArticleController@index');
+
+Route::get('404', function(){return 'Page not found';});
