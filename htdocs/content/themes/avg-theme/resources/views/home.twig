@@ -4,24 +4,51 @@
     <h1>Mon titre bordel : </h1>
     {# {{ dump(listArticle) }} #}
 
+    {% if sticky is defined %}
+      <div class="sticky_bloc">
+        <a href="{{ sticky.link }}">
+          <div class="bloc_img">
+            {{ sticky.imgHome|raw }}
+          </div>
+          <div class="bloc_content">
+            <p class="date">{{ sticky.date|date("d.m.Y") }}</p>
+            <h3>{{ sticky.title }}</h3>
+            <p>{{ sticky.resume }}</p>
+            <p class="button">Voir l'article</p>
+          </div>
+        </a>
+      </div>
+
+    {% endif %}
+
     {% for item in listArticle %}
+
     		<div class="article">
     			<p class="date">{{ item.date|date("d.m.Y") }}</p>
+
           {% if item.img is defined %}
+
             <div class="thumbnail">
               <a href="{{ item.link }}">{{ item.img|raw }}</a>
             </div>
             <h3>{{ item.title }}</h3>
+
             {% else %}
+
             <div class="default_thumbnail">
               <h3 class="big_Title">{{ item.title }}</h3>
             </div>
+
           {% endif %}
+
     			<p>{{ item.resume }}</p>
     			<div class="button"><a href="{{ item.link }}">Voir l'article</a></div>
     		</div>
+
     {% else %}
+
     <h2> Je ne suis pas rentré dans la boucle</h2>
+
     {% endfor %}
 
     <div class="test_pagination">

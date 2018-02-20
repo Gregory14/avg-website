@@ -27,7 +27,7 @@ class ListPostsController extends BaseController
             $articleData[$i] = [
               'ID' => $ListPosts[$i]->ID,
       				'date' => $ListPosts[$i]->post_date,
-              'img' => get_the_post_thumbnail($ListPosts[$i]->ID, 'medium'),
+              'img' => get_the_post_thumbnail($ListPosts[$i]->ID, 'themosis'),
       				'title' => $ListPosts[$i]->post_title,
       				'resume' => $ListPosts[$i]->post_excerpt,
       				'link' => $ListPosts[$i]->guid

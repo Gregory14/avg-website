@@ -8,7 +8,7 @@
             <h3>Gallerie Image</h3>
 		    <div class="gallery">
 		    	{% for image in gallery %}
-		    		{{ image.imgPath|raw }}
+		    		<a href="#">{{ image.imgPath|raw }}</a>
 		    	{% endfor %}
 		    </div>
 

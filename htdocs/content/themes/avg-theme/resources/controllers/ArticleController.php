@@ -19,7 +19,7 @@ class ArticleController extends BaseController
           $article[$i] = [
             'ID' => $article[$i]->ID,
             'date' => $article[$i]->post_date,
-            'img' => get_the_post_thumbnail($article[$i]->ID, 'medium'),
+            'img' => get_the_post_thumbnail($article[$i]->ID, 'themosis'),
             'title' => $article[$i]->post_title,
             'resume' => $article[$i]->post_excerpt,
             'link' => $article[$i]->guid
@@ -35,7 +35,7 @@ class ArticleController extends BaseController
             }
 
             $dataArticle = array(
-                'thumbnail' => get_the_post_thumbnail($post, 'medium'),
+                'thumbnail' => get_the_post_thumbnail($post, 'banner'),
                 'title' => $post->post_title,
                 'content' => $post->post_content,
                 'gallery' => $img,
@@ -46,7 +46,7 @@ class ArticleController extends BaseController
 
         else {
             $dataArticle = array(
-                'thumbnail' => get_the_post_thumbnail($post, 'medium'),
+                'thumbnail' => get_the_post_thumbnail($post, 'banner'),
                 'title' => $post->post_title,
                 'content' => $post->post_content,
                 'actualities' => $article
