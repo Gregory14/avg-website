@@ -30,7 +30,8 @@ use \WP_Query;
              'posts_per_page'    => $PostPerPage,
              'post_status'       => 'publish',
              'order'             => 'DESC',
-             'paged'             => $PageId
+             'paged'             => $PageId,
+             // 'meta_query'        => ['Infos' => ['key' => 'author']]
          ]);
 
          return $dataArticles->get_posts();
@@ -39,6 +40,20 @@ use \WP_Query;
      public static function getNbrPage(){
        $PostPerPage = get_option( 'posts_per_page' );
        return wp_count_posts('post')->publish/$PostPerPage;
+     }
+
+     public static function otherPosts()
+     {
+       $currentPost=get_the_ID();
+       $otherPosts = new WP_query([
+           'post_type'         => 'post',
+           'posts_per_page'    => 3,
+           'post_status'       => 'publish',
+           'order'             => 'DESC',
+           'post__not_in'      => [$currentPost]
+       ]);
+
+       return $otherPosts->get_posts();
      }
 
  }

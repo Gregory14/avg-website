@@ -10,26 +10,22 @@ use \WP_Query;
 
 class HomeController extends BaseController
 {
-    // public function pages($PageNumber)
-    // {
-    //
-    // }
-
     public function index()
     {
       $id = (isset($id)) ? $id : 1 ;
       $ListPosts = PostsModel::all($id);
       $nbrPosts = PostsModel::getNbrPage();
-      // var_dump('Calcule nbr post : '.$nbrPosts);
 
           for ($i=0; $i < sizeof($ListPosts); $i++) {
             # code...
             $articleData[$i] = [
               'ID' => $ListPosts[$i]->ID,
       				'date' => $ListPosts[$i]->post_date,
+              'img' => get_the_post_thumbnail($ListPosts[$i]->ID, 'medium'),
       				'title' => $ListPosts[$i]->post_title,
-      				'resume' => $ListPosts[$i]->post_content,
+      				'resume' => $ListPosts[$i]->post_excerpt,
       				'link' => $ListPosts[$i]->guid
+              // 'auteur' => get_post_meta($ListPosts[$i]->ID, 'author', true),
             ];
           }
 

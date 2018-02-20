@@ -8,10 +8,14 @@
     		<div class="article">
     			<p class="date">{{ item.date|date("d.m.Y") }}</p>
           {% if item.img is defined %}
-            <img src="{{ item.img }}" alt="" class="thumbnail">
+            <div class="thumbnail">
+              <a href="{{ item.link }}">{{ item.img|raw }}</a>
+            </div>
             <h3>{{ item.title }}</h3>
             {% else %}
-            <h3 class="big_Title">{{ item.title }}</h3>
+            <div class="default_thumbnail">
+              <h3 class="big_Title">{{ item.title }}</h3>
+            </div>
           {% endif %}
     			<p>{{ item.resume }}</p>
     			<div class="button"><a href="{{ item.link }}">Voir l'article</a></div>

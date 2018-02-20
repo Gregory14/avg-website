@@ -1,6 +1,9 @@
 {% extends 'layouts/main.twig' %}
 
 {% block main %}
+    <div class="thumbnail">
+      {{ thumbnail|raw }}
+    </div>
     <h1>{{title}}</h1>
     <div>{{ wpautop(content)|raw }}</div>
 {% endblock %}

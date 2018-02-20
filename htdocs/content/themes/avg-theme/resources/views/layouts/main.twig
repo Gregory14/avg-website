@@ -2,32 +2,43 @@
     <div class="container">
         {% block main %}{% endblock %}
     </div>
-{% if block ("galleryImage") is defined and gallery is not empty %}	
+{% if block ("galleryImage") is defined and gallery is not empty %}
     <div class="sectionGallery">
-        
+
             <h3>Gallerie Image</h3>
 		    <div class="gallery">
 		    	{% for image in gallery %}
 		    		{{ image.imgPath|raw }}
 		    	{% endfor %}
 		    </div>
-        
+
     </div>
 {% endif %}
 
-{% if block ("actualities") is defined %} 
+{% if block ("actualities") is defined %}
     <div class="sectionActuality">
         <h3>Les autres actualités</h3>
         <div class="actusList">
             {% for actuality in actualities %}
             <div class="actu">
-                    <p>coucou actu</p>
-                    <p class="dateActu"></p>
-                    <img src="" alt="">
-                    <h4>{{actuality.actuTitle}}</h4>
-                    <p>{{actuality.actuImg}}</p>
+                <p class="dateActu">{{ actuality.date|date("d.m.Y") }}</p>
+                {% if actuality.img is not empty %}
+                  <div class="thumbnail">
+                    {{ actuality.img|raw }}
+                  </div>
+
+                  {% else %}
+                  <div class="thumbnail-default">
+                    <img src="#" alt="">
+                  </div>
+                {% endif %}
+                <h4>{{ actuality.title }}</h4>
+                {% if actuality.resume is not empty %}
+                  <p>{{ actuality.resume }}</p>
+                {% endif %}
+                <p><a href="{{ actuality.link }}">+</a></p>
             </div>
-            {% endfor %}            
+            {% endfor %}
         </div>
     </div>
 {% endif %}

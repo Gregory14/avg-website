@@ -27,9 +27,11 @@ class ListPostsController extends BaseController
             $articleData[$i] = [
               'ID' => $ListPosts[$i]->ID,
       				'date' => $ListPosts[$i]->post_date,
+              'img' => get_the_post_thumbnail($ListPosts[$i]->ID, 'medium'),
       				'title' => $ListPosts[$i]->post_title,
-      				'resume' => $ListPosts[$i]->post_content,
+      				'resume' => $ListPosts[$i]->post_excerpt,
       				'link' => $ListPosts[$i]->guid
+              // 'auteur' => get_post_meta(74, 'author')
             ];
           }
 

@@ -2,6 +2,7 @@
 
 namespace Theme\Controllers;
 
+use Theme\Models\PostsModel;
 use Themosis\Route\BaseController;
 use Themosis\Facades\Route;
 use Theme\Models;
@@ -12,8 +13,18 @@ class ArticleController extends BaseController
     public function index($post)
     {
         $gallery = get_post_meta($post->ID, 'photos', true);
-        $article = [['actuTitle' => 'Mon titre 1', 'actuImg' => 'Mon image de l\'article 1'], ['actuTitle' => 'Mon titre 2', 'actuImg' => 'Mon image de l\'article 2']];
-
+        $article = PostsModel::otherPosts();
+        for ($i=0; $i < sizeof($article); $i++) {
+          # code...
+          $article[$i] = [
+            'ID' => $article[$i]->ID,
+            'date' => $article[$i]->post_date,
+            'img' => get_the_post_thumbnail($article[$i]->ID, 'medium'),
+            'title' => $article[$i]->post_title,
+            'resume' => $article[$i]->post_excerpt,
+            'link' => $article[$i]->guid
+          ];
+        }
         if (!empty($gallery)) {
             # code...
             foreach ($gallery as $key) {
@@ -24,6 +35,7 @@ class ArticleController extends BaseController
             }
 
             $dataArticle = array(
+                'thumbnail' => get_the_post_thumbnail($post, 'medium'),
                 'title' => $post->post_title,
                 'content' => $post->post_content,
                 'gallery' => $img,
@@ -34,8 +46,10 @@ class ArticleController extends BaseController
 
         else {
             $dataArticle = array(
+                'thumbnail' => get_the_post_thumbnail($post, 'medium'),
                 'title' => $post->post_title,
-                'content' => $post->post_content
+                'content' => $post->post_content,
+                'actualities' => $article
                 );
             return view('article', $dataArticle);
         }
