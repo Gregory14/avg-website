@@ -11,6 +11,9 @@ class PageController extends BaseController
     {
         $gallery = get_post_meta($post->ID, 'photos', true);
 
+        // GET Thumbnail for Banner
+        $banner = get_the_post_thumbnail($post->ID, 'banner');
+
         if (!empty($gallery)) {
             # code...
             foreach ($gallery as $key) {
@@ -21,6 +24,7 @@ class PageController extends BaseController
             }
 
             $dataPage = array(
+                'thumbnail' => $banner,
                 'title' => $post->post_title,
                 'content' => $post->post_content,
                 'gallery' => $img
@@ -30,6 +34,7 @@ class PageController extends BaseController
 
         else {
             $dataPage = array(
+                'thumbnail' => $banner,
                 'title' => $post->post_title,
                 'content' => $post->post_content
                 );

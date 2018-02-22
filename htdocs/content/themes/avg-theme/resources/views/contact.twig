@@ -1,13 +1,16 @@
 {% extends 'layouts/main.twig' %}
 
 {% block main %}
+    <div class="Header">
+      {{ thumbnail|raw }}
+    </div>
     <h1>{{title}}</h1>
     <div class="bloc_square">{{ wpautop(content)|raw }}</div>
 
 	<div class="bloc_square">
 		<h3>Formulaire de contact</h3>
 		<ul>
-		{{ wpautop(Form.open())|raw }}	
+		{{ wpautop(Form.open())|raw }}
 			<li>{{ Form.label('Votre nom') | raw}} {{ Form.text('name', '' , {'placeholder' : 'Votre nom'}) | raw }}</li>
 
 			<li>{{Form.label('Votre email') | raw}} {{ Form.email('mail', '' , {'placeholder' : 'votreadresse@mail.com'}) | raw }}</li>

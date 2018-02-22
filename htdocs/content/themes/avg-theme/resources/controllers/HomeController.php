@@ -18,7 +18,6 @@ class HomeController extends BaseController
       // var_dump($ListPosts);
       // Find Sticky Post sinc PostsModel
       $sticky = PostsModel::getStkickyPost();
-      var_dump($sticky);
       // Use only 1 sticky post on all
       $stickyData =
       [
@@ -45,33 +44,6 @@ class HomeController extends BaseController
       return view('home', [
         'listArticle' => $articleData,
         'sticky' => $stickyData
-        // 'nbrpost' => $nbrPosts,
-        // 'path' => WP_HOME,
-        // 'currentPage' => $id,
       ]);
     }
-
-  // public function pages()
-  // {
-  //   $ListPosts = PostsModel::all();
-  //   $nbrPosts = PostsModel::countPostPublish();
-  //
-  //       for ($i=0; $i < sizeof($ListPosts); $i++) {
-  //         # code...
-  //         $articleData[$i] = [
-  //           'ID' => $ListPosts[$i]->ID,
-  //           'date' => $ListPosts[$i]->post_date,
-  //           'title' => $ListPosts[$i]->post_title,
-  //           'resume' => $ListPosts[$i]->post_content,
-  //           'link' => $ListPosts[$i]->guid
-  //         ];
-  //       }
-  //
-  //   return view('home', [
-  //     'listArticle' => $articleData,
-  //     'nbrpost' => $nbrPosts,
-  //     'nextPage' => 'next_posts_link()',
-  //     'previousPage' => 'previous_posts_link()'
-  //   ]);
-  // }
 }

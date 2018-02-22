@@ -8,51 +8,29 @@ use Themosis\Facades\Route;
 
 class TarifsController extends BaseController
 {
-    public function tarifs($post, $query)
+    public function tarifs($post)
     {
         // GET renouvellement data
         $renouvellement = get_post_meta($post->ID, 'renouvellement', true);
 
         // GET new Prices data
         $newPrices = get_post_meta($post->ID, 'newPrices'); // Fonctionne -> Retourne un array
-        $newPrices = $newPrices[0];
 
         // GET Prices data
         $prices = get_post_meta($post->ID, 'prices'); // Fonctionne -> Retourne un array
-        $prices = $prices[0];
 
+        // GET Thumbnail for Banner
+        $banner = get_the_post_thumbnail($post->ID, 'banner');
 
         $dataTarifs = array(
+            'thumbnail' => $banner,
             'title' => $post->post_title,
             'content' => $post->post_content,
-            'newPrices' => $newPrices,
+            'newPrices' => $newPrices[0],
             'renouvellement' => $renouvellement,
-            'prices' => $prices
+            'prices' => $prices[0]
             );
 
-        $tarifs = view('tarifs', $dataTarifs);
-        return $tarifs;
-
-
-        // récupérr l'object
-        // print_r($post);
-
-        // recuperer ID du post
-        // print_r($post->ID);
-
-        // Création objet
-        // $obj = Meta::get($post->ID, 'newPrices'); // Chercher dans le namespace Theme\Controller
-
-        // $obj = themosis_get_the_query($post->ID, 'newPrices'); // Equivalent à -> $query
-
-        // $obj = with($post)->get(); // Ne fonctionne pas
-
-        // $obj = get_post_meta($post->ID, 'newPrices'); // Fonctionne -> Retourne un array
-
-        // print_r($post);
-
-        // $obj = Meta::get($post->ID, 'newPrices'); // Chercher dans le namespace Theme\Controller
-        // print_r($obj);
-
+        return view('tarifs', $dataTarifs);
     }
 }

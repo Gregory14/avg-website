@@ -2,7 +2,6 @@
 
 namespace Theme\Models;
 use Themosis\Route\HomeController;
-// use  wp-includes\class-wp-query.php
 use \WP_Query;
 
 /**
@@ -67,7 +66,6 @@ use \WP_Query;
      public static function getStkickyPost()
      {
        $sticky = get_option( 'sticky_posts' );
-       var_dump($sticky[0]);
          $dataArticles = new WP_query([
              'post_type'         => 'post',
              'posts_per_page'    => 1,

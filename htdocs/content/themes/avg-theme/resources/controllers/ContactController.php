@@ -9,8 +9,11 @@ class ContactController extends BaseController
 {
     public function contact($post)
     {
-    	//var_dump($post);
+      // GET Thumbnail for Banner
+      $banner = get_the_post_thumbnail($post->ID, 'banner');
+
     	$dataContact = array(
+        'thumbnail' => $banner,
     		'title' => $post->post_title,
     		'content' => $post->post_content
     		);

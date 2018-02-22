@@ -1,6 +1,9 @@
 {% extends 'layouts/main.twig' %}
 
 {% block main %}
+    <div class="Header">
+      {{ thumbnail|raw }}
+    </div>
     <h1>{{title}}</h1>
     <div class="bloc_square">{{ wpautop(content)|raw}}</div>
 

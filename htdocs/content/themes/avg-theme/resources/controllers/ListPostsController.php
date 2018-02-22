@@ -10,10 +10,6 @@ use \WP_Query;
 
 class ListPostsController extends BaseController
 {
-    // public function pages($PageNumber)
-    // {
-    //
-    // }
 
     public function index()
     {
@@ -37,9 +33,6 @@ class ListPostsController extends BaseController
 
       return view('home', [
         'listArticle' => $articleData,
-        // 'nbrpost' => $nbrPosts,
-        // 'path' => WP_HOME,
-        // 'currentPage' => $id,
       ]);
     }
 }
