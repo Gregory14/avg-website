@@ -1,55 +1,59 @@
 {% extends 'layouts/main.twig' %}
 
 {% block main %}
-    <h1>Mon titre bordel : </h1>
+    <!-- <h1>Mon titre bordel : </h1> -->
     {# {{ dump(listArticle) }} #}
 
     {% if sticky is defined %}
-      <div class="sticky_bloc">
-        <a href="{{ sticky.link }}">
-          <div class="bloc_img">
-            {{ sticky.imgHome|raw }}
+    <div class="row">
+      <div class="sticky_bloc col-12">
+        <a href="{{ sticky.link }}" class="row">
+          <div class="bloc_img col-8">
+            <img src="{{ sticky.imgHome }}" alt="">
           </div>
-          <div class="bloc_content">
+          <div class="bloc_content col-4">
             <p class="date">{{ sticky.date|date("d.m.Y") }}</p>
-            <h3>{{ sticky.title }}</h3>
+            <h2>{{ sticky.title }}</h2>
             <p>{{ sticky.resume }}</p>
-            <p class="button">Voir l'article</p>
+            <p class="button">+</p>
           </div>
         </a>
       </div>
+    </div>
 
     {% endif %}
-
+      <div class="row">
     {% for item in listArticle %}
+      		<div class="article col-4">
+            <div class="content">
+      			<p class="date">{{ item.date|date("d.m.Y") }}</p>
 
-    		<div class="article">
-    			<p class="date">{{ item.date|date("d.m.Y") }}</p>
+            {% if item.img is defined and item.img == false %}
 
-          {% if item.img is defined %}
+              <div class="default_thumbnail">
+                <h2 class="big_Title">{{ item.title }}</h2>
+              </div>
 
-            <div class="thumbnail">
-              <a href="{{ item.link }}">{{ item.img|raw }}</a>
+              {% else %}
+
+              <div class="thumbnail">
+                <a href="{{ item.link }}"><img src="{{ item.img|raw }}" alt=""></a>
+              </div>
+              <h2>{{ item.title }}</h2>
+
+            {% endif %}
+
+      			<p>{{ item.resume }}</p>
+      			<div class="button"><a href="{{ item.link }}">+</a></div>
             </div>
-            <h3>{{ item.title }}</h3>
-
-            {% else %}
-
-            <div class="default_thumbnail">
-              <h3 class="big_Title">{{ item.title }}</h3>
-            </div>
-
-          {% endif %}
-
-    			<p>{{ item.resume }}</p>
-    			<div class="button"><a href="{{ item.link }}">Voir l'article</a></div>
-    		</div>
+      		</div>
 
     {% else %}
 
     <h2> Je ne suis pas rentré dans la boucle</h2>
 
     {% endfor %}
+    </div>
 
     <div class="test_pagination">
       {{ fn('the_posts_pagination', {
@@ -59,26 +63,26 @@
         'screen_reader_text': 'Titre de ma pagination à masquer en CSS',
         }) }}
     </div>
-    {# Pagination manuelle
+     Pagination manuelle
     {% if nbrpost > 1 %}
-    <div id="paging">
-      <ul>
-        <li class="previous_page"> <a href="{{ path }}/page/{{currentPage - 1}}"><</a></li>
+    <nav id="paging" aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="previous_page"> <a class="page-link" href="{{ path }}/page/{{currentPage - 1}}"><</a></li>
         {% if nbrpost > 6 %}
-            <li><a href="{{ path }}/{{ currentPage }}">1</a></li>
-            <li><a href="{{ path }}/page/2">2</a></li>
-            <li><a href="{{ path }}/page/3">4</a></li>
-            <li><a href="{{ path }}/page/4">4</a></li>
-            <li><a href="{{ path }}/page/5">5</a></li>
+            <li class="page-item"><a class="page-link" href="{{ path }}/{{ currentPage }}">1</a></li>
+            <li class="page-item"><a class="page-link" href="{{ path }}/page/2">2</a></li>
+            <li class="page-item"><a class="page-link" href="{{ path }}/page/3">3</a></li>
+            <li class="page-item"><a class="page-link" href="{{ path }}/page/4">4</a></li>
+            <li class="page-item"><a class="page-link" href="{{ path }}/page/5">5</a></li>
         {% else %}
             {% for nbr in 1..nbrpost %}
-                <li><a href="{{ path }}/page/{{ nbr }}">{{ nbr }} / {% if nbr == currentPage %} {{ currentPage }} {% endif %}</a></li>
+                <li class="page-item"><a class="page-link" href="{{ path }}/page/{{ nbr }}">{{ nbr }} / {% if nbr == currentPage %} {{ currentPage }} {% endif %}</a></li>
             {% endfor %}
         {% endif %}
-        <li class="next_page"> <a href="{{ path }}/page/{{currentPage + 1}}">></a></li>
+        <li class="next_page"> <a class="page-link" href="{{ path }}/page/{{currentPage + 1}}">></a></li>
       </ul>
-    </div>
+    </nav>
     {% endif %}
-    Fin pagination manuelle #}
+    Fin pagination manuelle
 
 {% endblock %}

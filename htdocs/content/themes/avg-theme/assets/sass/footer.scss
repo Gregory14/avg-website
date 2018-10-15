@@ -1,0 +1,27 @@
+$blue : #6188C4;
+$white : #FFFFFF;
+$red : #D06668;
+$gold : #D1B271;
+
+.footer {
+  border-top: 5px solid $red;
+  border-bottom: 2px solid $white;
+  background-color: $blue;
+  color: $white;
+  a {
+    text-decoration: none;
+    color: $white;
+  }
+}
+
+.copyright {
+  background-color: $gold;
+  border-top: 2px solid $white;
+  padding: 0.5rem;
+  font-size: 1rem;
+  p {
+    margin: 0;
+    text-align: center;
+    color: $white;
+  }
+}

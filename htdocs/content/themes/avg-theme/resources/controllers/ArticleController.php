@@ -6,6 +6,7 @@ use Theme\Models\PostsModel;
 use Themosis\Route\BaseController;
 use Themosis\Facades\Route;
 use Theme\Models;
+use Themosis\Facades\Asset;
 
 class ArticleController extends BaseController
 {
@@ -41,6 +42,7 @@ class ArticleController extends BaseController
                 'gallery' => $img,
                 'actualities' => $article
                 );
+            Asset::add('single', 'css/screen.min.css', false, '1.0', 'all');
             return view('article', $dataArticle);
         }
 
@@ -51,6 +53,7 @@ class ArticleController extends BaseController
                 'content' => $post->post_content,
                 'actualities' => $article
                 );
+            Asset::add('single', 'css/screen.min.css', false, '1.0', 'all');
             return view('article', $dataArticle);
         }
     }

@@ -4,6 +4,7 @@ namespace Theme\Controllers;
 
 use Themosis\Route\BaseController;
 use Themosis\Facades\Route;
+use Themosis\Facades\Asset;
 
 class PageController extends BaseController
 {
@@ -29,6 +30,7 @@ class PageController extends BaseController
                 'content' => $post->post_content,
                 'gallery' => $img
                 );
+            Asset::add('page', 'css/screen.min.css', false, '1.0', 'all');
             return view('pages', $dataPage);
         }
 
@@ -38,6 +40,7 @@ class PageController extends BaseController
                 'title' => $post->post_title,
                 'content' => $post->post_content
                 );
+            Asset::add('page', 'css/screen.min.css', false, '1.0', 'all');
             return view('pages', $dataPage);
         }
     }

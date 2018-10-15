@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+		<!-- <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css" />
+    <title>{{title}} - Les archers du Vert-Galant</title> -->
+		<meta charset="utf-8">
+	 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		{{ wp_head() }}
 
-		<meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css" />
-        <title>{{title}} - Les archers du Vert-Galant</title>
-
-</head>
 <body>
-	<header>
-		<div class="menu">{{ fn('wp_nav_menu', {'theme_location' : 'header-nav'}) }}</div>
-	</header>
+	<div class="wrapper">
+		<!-- <nav class="collapse navbar-collapse" id="sidebar"> -->
+			{{ fn('wp_nav_menu',
+					{'theme_location' : 'header-nav',
+					'menu_id' : 'nav-home',
+					'menu_class' : 'navbar-nav',
+					'container' : 'nav',
+					'container_id' : 'sidebar',
+					'container_class' : 'collapse navbar-collapse'})
+			}}
+		<!-- </nav> -->
+
+		<div class="content">
+			<header>
+				<nav class="navbar navbar-light">
+	        <a class="navbar-brand">Mon image</a>
+	        <a class="navbar-brand" href="#">Compagnie d'arc des archers du Vert-Galant</a>
+	        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-label="Toggle navigation">
+						<span>menu</span>
+						<span class="navbar-toggler-icon" aria-hidden="true"></span>
+	        </button>
+	      </nav>
+			</header>

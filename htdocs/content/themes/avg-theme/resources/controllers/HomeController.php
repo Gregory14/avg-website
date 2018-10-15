@@ -3,6 +3,7 @@
 namespace Theme\Controllers;
 
 // use Theme\Models\Articles;
+use Themosis\Facades\Asset;
 use Theme\Models\PostsModel;
 use Themosis\Route\BaseController;
 use Themosis\Facades\Route;
@@ -15,6 +16,7 @@ class HomeController extends BaseController
       $id = (isset($id)) ? $id : 1 ;
       $ListPosts = PostsModel::all($id);
       $nbrPosts = PostsModel::getNbrPage();
+      $paged = get_query_var('paged');
       // var_dump($ListPosts);
       // Find Sticky Post sinc PostsModel
       $sticky = PostsModel::getStkickyPost();
@@ -23,7 +25,7 @@ class HomeController extends BaseController
       [
         "ID" =>  $sticky[0]->ID,
         "date" => $sticky[0]->post_date,
-        "imgHome" => get_the_post_thumbnail($sticky[0]->ID, 'themosis'),
+        "imgHome" => get_the_post_thumbnail_url($sticky[0]->ID, 'banner'),
         "title" => $sticky[0]->post_title,
         "resume" => $sticky[0]->post_excerpt,
         "link" =>  $sticky[0]->guid
@@ -33,7 +35,7 @@ class HomeController extends BaseController
             $articleData[$i] = [
               'ID' => $ListPosts[$i]->ID,
       				'date' => $ListPosts[$i]->post_date,
-              'img' => get_the_post_thumbnail($ListPosts[$i]->ID, 'themosis'),
+              'img' => get_the_post_thumbnail_url($ListPosts[$i]->ID, 'themosis'),
       				'title' => $ListPosts[$i]->post_title,
       				'resume' => $ListPosts[$i]->post_excerpt,
       				'link' => $ListPosts[$i]->guid
@@ -41,9 +43,14 @@ class HomeController extends BaseController
             ];
           }
 
+Asset::add('home', 'css/screen.min.css', false, '1.0', 'all');
+// Asset::add('home', 'js/theme.min.js', ['jquery'], '1.0', true);
       return view('home', [
         'listArticle' => $articleData,
-        'sticky' => $stickyData
+        'sticky' => $stickyData,
+        'nbrpost' => $nbrPosts,
+        'path' => WP_HOME,
+        'currentPage' => $paged
       ]);
     }
 }

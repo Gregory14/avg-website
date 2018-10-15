@@ -1,0 +1,35 @@
+$blue : #6188C4;
+$white : #FFFFFF;
+$red : #D06668;
+
+header {
+  border-bottom: $red 5px solid;
+  margin-bottom: 2.5rem;
+  nav {
+    background-color: $blue;
+    color: $white;
+    font-family: Lobster;
+  }
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: stretch;
+}
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background-color: $blue;
+
+    li {
+      padding: 1rem;
+      a {
+        color: $white;
+      }
+    }
+}
+
+#sidebar.active {
+    margin-right: -250px;
+}
